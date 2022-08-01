@@ -255,10 +255,12 @@ CaptureWidget::CaptureWidget(const CaptureRequest& req,
 
     updateCursor();
 
+#if defined(Q_OS_WIN)
     show();
-    move(topLeft);
+    move(topLeft); // if topLeft is negative, window must be moved after show()
     resize(pixmap().size());
     AbstractLogger::error() << "Resize: " << QString::number(pixmap().size().height()) << QString::number(pixmap().size().width()) ;
+#endif
 }
 
 CaptureWidget::~CaptureWidget()
