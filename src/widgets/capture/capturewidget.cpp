@@ -134,6 +134,7 @@ CaptureWidget::CaptureWidget(const CaptureRequest& req,
                 topLeft.setY(topLeftScreen.y());
             }
         }
+        show();
         move(topLeft);
         resize(pixmap().size());
 		AbstractLogger::error() << "Resize: " << QString::number(pixmap().size().height()) << QString::number(pixmap().size().width()) ;
