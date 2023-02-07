@@ -136,6 +136,7 @@ CaptureWidget::CaptureWidget(const CaptureRequest& req,
         }
         move(topLeft);
         resize(pixmap().size());
+		AbstractLogger::error() << "Resize: " << QString::number(pixmap().size().height()) << QString::number(pixmap().size().width()) ;
 #elif defined(Q_OS_MACOS)
         // Emulate fullscreen mode
         //        setWindowFlags(Qt::WindowStaysOnTopHint |
@@ -153,6 +154,7 @@ CaptureWidget::CaptureWidget(const CaptureRequest& req,
         setWindowFlags(Qt::BypassWindowManagerHint | Qt::WindowStaysOnTopHint |
                        Qt::FramelessWindowHint | Qt::Tool);
         resize(pixmap().size());
+		AbstractLogger::error() << "Resize: " << QString::number(pixmap().size().height()) << QString::number(pixmap().size().width()) ;
 #endif
 #endif
     }
