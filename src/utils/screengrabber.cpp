@@ -191,6 +191,8 @@ QRect ScreenGrabber::desktopGeometry()
         scrRect.moveTo(scrRect.x() / screen->devicePixelRatio(),
                        scrRect.y() / screen->devicePixelRatio());
         geometry = geometry.united(scrRect);
+		AbstractLogger::error() << "scrRect: " << QString::number(scrRect.x()) << QString::number(scrRect.y())<< QString::number(scrRect.width())<< QString::number(scrRect.height());
+		AbstractLogger::error() << "geometry: " << QString::number(geometry.x()) << QString::number(geometry.y())<< QString::number(geometry.width())<< QString::number(geometry.height());
     }
     return geometry;
 }

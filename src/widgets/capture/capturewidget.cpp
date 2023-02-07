@@ -101,6 +101,7 @@ CaptureWidget::CaptureWidget(const CaptureRequest& req,
     m_contrastUiColor = m_config.contrastUiColor();
     setMouseTracking(true);
     initContext(fullScreen, req);
+	AbstractLogger::error() << "Fullscreen: " << QString::number(fullScreen);
 #if (defined(Q_OS_WIN) || defined(Q_OS_MACOS))
     // Top left of the whole set of screens
     QPoint topLeft(0, 0);
@@ -125,7 +126,6 @@ CaptureWidget::CaptureWidget(const CaptureRequest& req,
 
         for (QScreen* const screen : QGuiApplication::screens()) {
             QPoint topLeftScreen = screen->geometry().topLeft();
-            AbstractLogger::error() << "Screen: " << QString::number(topLeftScreen.x()) << QString::number(topLeftScreen.y());
 
             if (topLeftScreen.x() < topLeft.x()) {
                 topLeft.setX(topLeftScreen.x());
@@ -179,7 +179,6 @@ CaptureWidget::CaptureWidget(const CaptureRequest& req,
 #else
         for (QScreen* const screen : QGuiApplication::screens()) {
             QRect r = screen->geometry();
-            AbstractLogger::error() << "Rect: " << QString::number(r.x()) << QString::number(r.y());
             r.moveTo(r.x() / screen->devicePixelRatio(),
                      r.y() / screen->devicePixelRatio());
             r.moveTo(r.topLeft() - topLeftOffset);
