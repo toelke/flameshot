@@ -243,6 +243,9 @@ file(GLOB_RECURSE _source_list LIST_DIRECTORIES false
 source_group(TREE ${_src_root_path} FILES ${_source_list})
 
 if (WIN32)
+	set_target_properties(flameshot PROPERTIES
+		LINK_FLAGS /SUBSYSTEM:CONSOLE
+		)
     set(USE_OPENSSL FALSE)
     if (ENABLE_OPENSSL)
         find_package(OpenSSL)
@@ -375,9 +378,6 @@ endif ()
 
 # windeployqt
 if (WIN32)
-	set_target_properties(${target} PROPERTIES
-		LINK_FLAGS /SUBSYSTEM:CONSOLE
-		)
     if (EXISTS $ENV{QTDIR}/bin/windeployqt.exe)
         if (CMAKE_BUILD_TYPE MATCHES Release)
             set(BINARIES_TYPE --release)
