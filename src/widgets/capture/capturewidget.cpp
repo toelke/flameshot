@@ -125,6 +125,7 @@ CaptureWidget::CaptureWidget(const CaptureRequest& req,
 
         for (QScreen* const screen : QGuiApplication::screens()) {
             QPoint topLeftScreen = screen->geometry().topLeft();
+            AbstractLogger::error() << "Screen: " << QString::number(topLeftScreen.x()) << QString::number(topLeftScreen.y());
 
             if (topLeftScreen.x() < topLeft.x()) {
                 topLeft.setX(topLeftScreen.x());
@@ -176,6 +177,7 @@ CaptureWidget::CaptureWidget(const CaptureRequest& req,
 #else
         for (QScreen* const screen : QGuiApplication::screens()) {
             QRect r = screen->geometry();
+            AbstractLogger::error() << "Rect: " << QString::number(r.x()) << QString::number(r.y());
             r.moveTo(r.x() / screen->devicePixelRatio(),
                      r.y() / screen->devicePixelRatio());
             r.moveTo(r.topLeft() - topLeftOffset);

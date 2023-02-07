@@ -375,6 +375,9 @@ endif ()
 
 # windeployqt
 if (WIN32)
+	set_target_properties(${target} PROPERTIES
+		LINK_FLAGS /SUBSYSTEM:CONSOLE
+		)
     if (EXISTS $ENV{QTDIR}/bin/windeployqt.exe)
         if (CMAKE_BUILD_TYPE MATCHES Release)
             set(BINARIES_TYPE --release)
